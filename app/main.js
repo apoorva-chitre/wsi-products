@@ -1,7 +1,14 @@
 // main.js
 
-let app = (name) => {
-    console.log(`Hello from ${name}`);
-}
+import css from "./style.css";
 
-app("WSI Products")
+let products = [];
+
+fetch("../data.json")
+.then( response => { 
+    return response.json()
+})
+.then ( data => {
+    products = data.groups;
+});
+
