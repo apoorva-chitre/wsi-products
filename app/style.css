@@ -31,7 +31,28 @@ body {
     flex-grow: 1; /* Keep p's same size */
   }
   
-  ul {
+  span {
+    color: lightgray;
+    background-color: black;
+    padding: 10px;
+    margin-left: -130px;
+    margin-top: 300px;
+    position: absolute;
     display: flex; /* Display specs in flex-row */
     justify-content: space-between; /* Specs to start and end of row */
+  }
+
+  #product {
+    margin-bottom: 5%;
+  }
+
+  h2 {
+    background-color: darkgrey;
+    width: 343px;
+    padding: 10px;
+    opacity: 70%;
+    color: black;
+    font-size: 1.25em;
+    position: absolute;
+    margin-top: 0px;
   }

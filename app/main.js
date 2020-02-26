@@ -9,11 +9,12 @@ fetch("../data.json")
 .then ( data => {
     const products = data.groups;
 
-    const productsTemplate = `
-        ${products.forEach( product => {
-            buildProduct(product)
-        })}
-    `;
+    var productsTemplate = ``;
+
+    products.forEach( product => {
+
+        productsTemplate += buildProduct(product)
+    });
 
     console.log(productsTemplate);
 
@@ -24,29 +25,22 @@ fetch("../data.json")
   
 function buildProduct(product) {
 
-    console.log(product.price);
-
     var price = 0;
 
-    if(product.price.regular){
-        price = product.price.regular
-    } else {
-        if(product.price.selling.high) {
-            price = product.price.selling.high
-        } else {
-            price = product.price.selling
-        }
+    if (product.price){
+        price = product.price.selling
+    }
+
+    if(product.priceRange) {
+        price = product.priceRange.selling.high
     }
 
     return `
         <section id="product">
             <img src="${product.hero.href}" width="${product.hero.width}" />
             <h2>${product.name}</h2>
-            <aside>
-                <ul>
-                    <li>${price}</li>
-                </ul>
-            </aside>
+            <span>$${price}</span>
+            
         </section>
     `;  
 }
